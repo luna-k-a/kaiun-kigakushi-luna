@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f2ff">
+  <meta name="description" content="開運氣學師ルナが、九星氣學と60分類干支からあなたの魅力と開運のヒントをお伝えします。">
+  <title>開運氣學師ルナの毎日占い</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="開運氣學師ルナの毎日占い トップへ">
+      <span class="brand-moon" aria-hidden="true">☾</span>
+      <span>開運氣學師ルナの毎日占い</span>
+    </a>
+    <nav aria-label="メインメニュー">
+      <a href="#daily">今日の占い</a>
+      <a href="#reading">鑑定内容</a>
+      <a href="#about">ご案内</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="stars" aria-hidden="true"></div>
+      <div class="constellation constellation-left" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span></div>
+      <div class="constellation constellation-right" aria-hidden="true"><span>✧</span><span>✦</span><span>✧</span><span>✦</span></div>
+      <div class="hero-copy">
+        <p class="eyebrow">NINE STAR KI × 60 CLASSIFICATIONS</p>
+        <h1><span>あなたの星を知って、</span><em>毎日をもっと幸運に。</em></h1>
+        <p class="lead">生まれもった魅力も、<br>迷っている今も、<br><span>あなたらしく運を開くヒントをお届けします</span></p>
+        <div class="hero-actions">
+      <a class="button button-primary" href="#daily">毎日の占いを見る</a>
+          <a class="button button-ghost" href="#reading">鑑定メニューを見る</a>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span>SCROLL</div>
+    </section>
+
+    <section class="daily-section" id="daily" aria-labelledby="daily-title">
+      <div class="section-kicker">DAILY FORTUNE</div>
+      <h2 id="daily-title">ルナの毎日占い</h2>
+      <p class="daily-intro">生年月日から、<br>今日のあなたにぴったりな<br>開運ヒントをお届けします。</p>
+      <button class="daily-card daily-trigger" id="daily-trigger" type="button" aria-controls="fortune-area" aria-expanded="false">
+        <span class="daily-date" id="daily-date">今日</span>
+        <div class="orb" aria-hidden="true"><span>☾</span></div>
+        <span class="daily-tap-label">タップして今日の運勢を見る</span>
+        <strong>あなたの星から、今日の幸運を。</strong>
+        <span class="daily-card-note" id="daily-card-note">生年月日の入力は最初の一度だけです</span>
+      </button>
+
+      <div class="fortune-area" id="fortune-area" hidden>
+        <form class="birthday-form" id="birthday-form">
+          <div>
+            <span class="form-kicker">はじめに</span>
+            <h3>生年月日を入力してください</h3>
+            <p>あなたの生年月日をもとに、毎日の開運ヒントをお届けします。</p>
+          </div>
+          <label for="birthday">生年月日</label>
+          <input id="birthday" name="birthday" type="date" required autocomplete="bday">
+          <button class="button button-primary" type="submit">生年月日で占う</button>
+          <p class="privacy-note">入力した生年月日は、この端末の中だけに保存されます。</p>
+        </form>
+
+        <section class="fortune-result" id="fortune-result" aria-live="polite" hidden>
+          <div class="fortune-result-head">
+            <div>
+              <span class="form-kicker">TODAY'S LUCKY GUIDE</span>
+              <h3>今日のあなたの開運ヒント</h3>
+            </div>
+            <button class="birthday-change" id="birthday-change" type="button">生年月日を変更</button>
+          </div>
+          <div class="fortune-grid">
+            <article><span aria-hidden="true">🎨</span><div><small>ラッキーカラー</small><strong id="lucky-color">—</strong></div></article>
+            <article><span aria-hidden="true">🍽️</span><div><small>パワーフード</small><strong id="power-food">—</strong></div></article>
+            <article><span aria-hidden="true">✨</span><div><small>開運アクション</small><strong id="lucky-action">—</strong></div></article>
+            <article><span aria-hidden="true">🔢</span><div><small>ラッキーナンバー</small><strong id="lucky-number">—</strong></div></article>
+            <article class="fortune-message"><span aria-hidden="true">☾</span><div><small>今日の一言</small><strong id="daily-message">—</strong></div></article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="guides" aria-labelledby="guides-title">
+      <div class="section-heading">
+        <div class="section-kicker">TWO SIDES OF LUNA</div>
+        <h2 id="guides-title">ルナが、あなたを導きます</h2>
+        <p>自分を深く知ることから、<br>運を味方につける行動まで。</p>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card crystal-card">
+          <div class="guide-image">
+            <img src="./assets/luna-crystal.jpeg" alt="水晶玉を持つ鑑定士ルナ" width="1024" height="1536" loading="lazy">
+          </div>
+          <div class="guide-copy">
+            <span class="guide-number">01</span>
+            <p class="role">あなた自身を読み解く</p>
+            <h3>水晶玉のルナ</h3>
+            <p>生年月日から、本命星・月命星・傾斜・60分類干支を組み合わせ、あなたの本質や魅力を丁寧に読み解きます。</p>
+            <ul>
+              <li>生まれ持った性格と本質</li>
+              <li>あなたの長所と魅力</li>
+              <li>人間関係の傾向と注意点</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="guide-card wand-card">
+          <div class="guide-image">
+            <img src="./assets/luna-wand.jpeg" alt="杖を持つ開運アドバイザーのルナ" width="1024" height="1536" loading="lazy">
+          </div>
+          <div class="guide-copy">
+            <span class="guide-number">02</span>
+            <p class="role">これからの一歩を照らす</p>
+            <h3>杖のルナ</h3>
+            <p>今のあなたに必要な運の生かし方を、仕事・お金・恋愛・方位など、身近なテーマからアドバイスします。</p>
+            <ul>
+              <li>毎日できる開運アクション</li>
+              <li>運気を生かすタイミング</li>
+              <li>迷ったときの進み方</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="reading-section" id="reading" aria-labelledby="reading-title">
+      <div class="section-heading">
+        <div class="section-kicker">READING MENU</div>
+        <h2 id="reading-title">ルナに相談できること</h2>
+        <p>気になるテーマから、今のあなたに必要なヒントを見つけてください。</p>
+      </div>
+      <div class="menu-grid">
+        <article><button class="menu-card-button" type="button" data-topic="work" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">💼</span><span class="menu-name">仕事運</span></span><span class="menu-summary">強みを生かせる働き方と、動くタイミング。</span><span class="menu-more">詳しく見る →</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
+        <article><button class="menu-card-button" type="button" data-topic="money" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">💰</span><span class="menu-name">金運</span></span><span class="menu-summary">お金との付き合い方と、豊かさを育てる行動。</span><span class="menu-more">詳しく見る →</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
+        <article><button class="menu-card-button" type="button" data-topic="love" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">♥</span><span class="menu-name">恋愛・結婚運</span></span><span class="menu-summary">愛情の傾向と、心地よい関係を育てるコツ。</span><span class="menu-more">詳しく見る →</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
+        <article><button class="menu-card-button" type="button" data-topic="compatibility" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">🤝</span><span class="menu-name">相性鑑定</span></span><span class="menu-summary">ふたりの違いを知り、関係を整えるヒント。</span><span class="menu-more">詳しく見る →</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
+        <article><button class="menu-card-button" type="button" data-topic="year" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">📅</span><span class="menu-name">今年の運勢</span></span><span class="menu-summary">今年のテーマと、運気の波に乗る過ごし方。</span><span class="menu-more">詳しく見る →</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
+        <article><button class="menu-card-button" type="button" data-topic="direction" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">🧭</span><span class="menu-name">吉方位</span></span><span class="menu-summary">目的に合わせて、運をひらく方位をご案内。</span><span class="menu-more">詳しく見る →</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
+      </div>
+      <section class="menu-detail" id="menu-detail" aria-labelledby="menu-detail-title" hidden>
+        <span class="form-kicker">READING MENU</span>
+        <h3 id="menu-detail-title" tabindex="-1"></h3>
+        <p id="menu-detail-copy"></p>
+        <p class="menu-detail-note">まずは無料の基本鑑定で、あなたの本命星・月命星・傾斜・干支を知ることができます。</p>
+        <button class="button button-primary" id="menu-detail-start" type="button">初回鑑定へ進む</button>
+      </section>
+      <div class="first-reading">
+        <div class="first-reading-copy">
+          <span class="first-reading-label">LUNA'S FIRST READING</span>
+          <h3>生年月日からわかる<br>初回無料の基本鑑定</h3>
+          <p>本命星・月命星・傾斜・干支から、<br>ルナがあなたの魅力を読み解きます。</p>
+        </div>
+        <button class="first-reading-button" id="first-reading-button" type="button" aria-controls="first-reading-panel" aria-expanded="false">
+          <span aria-hidden="true">☾</span> 初回鑑定はこちら <small>無料</small>
+        </button>
+      </div>
+
+      <div class="first-reading-panel" id="first-reading-panel" hidden>
+        <form class="reading-birthday-form" id="reading-birthday-form">
+          <span class="form-kicker">FIRST READING</span>
+          <h3>あなたの生年月日を教えてください</h3>
+          <p>ルナが、あなたの生まれ持った星を調べます。</p>
+          <label for="reading-birthday">生年月日</label>
+          <input id="reading-birthday" name="reading-birthday" type="date" required autocomplete="bday">
+          <label for="reading-gender">性別</label>
+          <select id="reading-gender" name="reading-gender" required>
+            <option value="">選択してください</option>
+            <option value="female">女性</option>
+            <option value="male">男性</option>
+          </select>
+          <button class="button button-primary" type="submit">星を調べる</button>
+          <p class="privacy-note">入力した生年月日は、この端末の中だけで使われます。</p>
+        </form>
+
+        <section class="birth-stars" id="birth-stars" aria-live="polite" hidden>
+          <span class="form-kicker">YOUR FOUR STARS</span>
+          <h3>あなたの生まれ持った星</h3>
+          <div class="birth-stars-grid">
+            <article><small>本命星</small><strong id="honmei-star">—</strong></article>
+            <article><small>月命星</small><strong id="getsumei-star">—</strong></article>
+            <article><small>傾斜</small><strong id="keisha-star">—</strong></article>
+            <article><small>干支</small><strong id="eto-sign">—</strong></article>
+          </div>
+          <div class="reading-confirm">
+            <div class="luna-mini" aria-hidden="true">☾</div>
+            <div><strong>ルナの鑑定に進みますか？</strong><p>あなたの星を重ねて、本質と魅力をお伝えします。</p></div>
+          </div>
+          <div class="confirm-actions">
+            <button class="button button-primary" id="start-luna-reading" type="button">はい、鑑定をお願いします</button>
+            <button class="button button-ghost" id="change-reading-birthday" type="button">生年月日を変更する</button>
+          </div>
+        </section>
+
+        <section class="luna-reading-result" id="luna-reading-result" aria-live="polite" hidden>
+          <div class="reading-glow" aria-hidden="true">☾</div>
+          <span class="form-kicker">LUNA'S MESSAGE</span>
+          <h3>ルナの鑑定が始まりました</h3>
+          <p class="reading-opening">水晶玉に、あなたの星の輝きが映し出されています…</p>
+          <div class="reading-text" id="reading-text"></div>
+          <p class="reading-closing">あなたらしさは、幸運をひらくいちばん大切な力です。今日からその魅力を、少しずつ輝かせていきましょう。</p>
+          <button class="birthday-change" id="restart-reading" type="button">もう一度鑑定する</button>
+        </section>
+      </div>
+    </section>
+
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="about-symbol" aria-hidden="true">
+        <span>九</span>
+        <small>星氣學</small>
+      </div>
+      <div class="about-copy">
+        <div class="section-kicker">A MESSAGE FROM KENKEN</div>
+        <h2 id="about-title"><span>占いは、</span><span>幸せにつながる扉を開いて、</span><span>自分らしく前へ進むために。</span></h2>
+        <p class="about-description"><span>九星氣學は、</span><span>生まれ持った性質や運気の流れを知り、</span><span>毎日の選択に生かすための知恵です。</span></p>
+        <p class="about-message"><span>自分の魅力に気づき、少し前向きになれる。</span><span>そんな温かな鑑定を、ルナと一緒にお届けします。</span></p>
+        <p class="signature"><span>開運氣學師</span>ケンケン</p>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="closing-sky" aria-hidden="true">
+        <div class="closing-stars"><span>✧</span><span>✦</span><span>✧</span></div>
+        <span class="moon-mark">☾</span>
+        <div class="closing-stars"><span>✧</span><span>✦</span><span>✧</span></div>
+      </div>
+      <h2 id="closing-title"><span>あなたの中には、</span><span>まだ知らない素敵な星があります。</span></h2>
+      <p><span>ルナと一緒に、</span><span>その輝きを見つけていきましょう。</span></p>
+      <a class="button button-primary" href="#top">トップへ戻る</a>
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer-brand">☾ 開運氣學師ルナの毎日占い</p>
+    <p>九星氣學と60分類干支で、あなたらしい開運を。</p>
+    <p class="copyright">© <span id="year"></span> Luna Daily Fortune</p>
+  </footer>
+</body>
+</html>
