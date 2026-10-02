@@ -398,3 +398,36 @@ footer { padding: 48px 24px; border-top: 1px solid rgba(173,121,38,.22); text-al
   .orb { animation: float 4.2s ease-in-out infinite; }
   @keyframes float { 50% { transform: translateY(-7px); box-shadow: 0 8px 58px rgba(57,177,218,.45); } }
 }
+
+.mobile-copy-break { display: none; }
+@media (max-width: 700px) {
+  .mobile-copy-break { display: inline; }
+}
+
+/* 読む場所は落ち着いた余白、入口と今日のヒントに輝きを。 */
+.hero-service-note { margin: 20px auto 0; max-width: 36rem; font-size: .9rem; line-height: 1.8; color: #675b75; }
+.menu-availability { max-width: 42rem; margin: 20px auto 0; padding: 16px 22px; border: 1px solid #e3d4e9; border-radius: 18px; background: #fffafc; color: #675b75; font-size: .94rem !important; line-height: 1.8; }
+.fortune-grid .fortune-message { background: linear-gradient(120deg, #fff4f8, #f3ecff); border: 1px solid #dec8e8; padding-block: 26px; }
+.fortune-message strong { line-height: 1.85; }
+.fortune-grid .fortune-action { border: 1px solid #dac298; background: #fffaf0; }
+.color-swatch { display: block; width: 36px; height: 36px; flex: 0 0 36px; border-radius: 50%; border: 2px solid #fff; outline: 1px solid #d3c4dc; box-shadow: 0 3px 10px #45305216; }
+.kenken-profile { margin: 24px 0 0; padding: 24px; border-radius: 22px; border: 1px solid #e4d5e9; background: #ffffffb8; text-align: left; }
+.kenken-profile h3 { margin: 0 0 12px; font-size: 1.15rem; color: #584364; }
+.kenken-profile p { font-size: 1rem; line-height: 1.9; margin: 12px 0 0; }
+.faq-section { max-width: 980px; margin: 0 auto; padding: 64px 24px; }
+.faq-list { display: grid; gap: 12px; }
+.faq-list details { border: 1px solid #e1d1e7; border-radius: 20px; padding: 0 24px; background: #ffffffc9; }
+.faq-list summary { padding: 22px 0; cursor: pointer; font-size: 1rem; font-weight: 600; color: #5c4568; line-height: 1.7; }
+.faq-list summary::marker { color: #af7ca4; }
+.faq-list details[open] { border-color: #bb94c8; }
+.faq-list p { margin: 0 0 24px; font-size: 1rem; color: #675b75; line-height: 1.9; }
+.faq-list summary:focus-visible { outline: 2px solid #8b619d; outline-offset: 5px; border-radius: 8px; }
+.fortune-grid small { font-size: .875rem; }
+@media (max-width: 540px) {
+  .hero-service-note { font-size: .875rem; }
+  .menu-availability { padding: 14px; }
+  .kenken-profile { padding: 20px; }
+  .faq-section { padding: 48px 16px; }
+  .faq-list details { padding-inline: 18px; }
+  .fortune-grid .fortune-message { padding: 22px 18px; }
+}

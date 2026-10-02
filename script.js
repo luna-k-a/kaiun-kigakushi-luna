@@ -6,16 +6,14 @@
   // 31の日替わりテーマと月ごとの季節感を組み合わせる。
   // 色名をそのまま表示する。近い色が連続しないよう、色系統を交互に巡る。
   const luckyColorGroups = [
-    ["桜ピンク", "桃色", "紅梅色", "ローズピンク", "ベビーピンク", "サーモンピンク", "コーラルピンク", "薔薇色", "ルビーレッド", "朱色", "茜色", "ワインレッド"],
-    ["太陽のオレンジ", "杏色", "蜜柑色", "山吹色", "レモンイエロー", "たんぽぽ色", "ゴールド", "シャンパンゴールド", "琥珀色", "マリーゴールド", "クリームイエロー", "アプリコット"],
-    ["若草色", "ミントグリーン", "翡翠色", "萌黄色", "若竹色", "青磁色", "オリーブグリーン", "エメラルドグリーン", "ライムグリーン", "セージグリーン", "ピスタチオグリーン", "深緑"],
-    ["空色", "水色", "アクアブルー", "ターコイズブルー", "セルリアンブルー", "コバルトブルー", "ロイヤルブルー", "マリンブルー", "深い藍色", "ネイビーブルー", "サファイアブルー", "ベビーブルー"],
-    ["ラベンダー", "藤色", "薄紫", "すみれ色", "ライラック", "モーヴ", "アメジスト", "紫苑色", "プラム", "パープル", "バイオレット", "葡萄色"],
-    ["パールホワイト", "アイボリー", "乳白色", "生成り色", "オフホワイト", "シルバーホワイト", "銀色", "ライトグレー", "グレージュ", "スモーキーグレー", "チャコールグレー", "雪色"],
-    ["ベージュ", "キャメル", "モカ", "ココアブラウン", "チョコレートブラウン", "テラコッタ", "シナモン色", "カフェオレ色", "サンドベージュ", "カッパーブラウン", "茶色", "ブロンズ"],
-    ["ピーチピンク", "ペールブルー", "ペールグリーン", "ペールイエロー", "ペールオレンジ", "ペールラベンダー", "ペールミント", "ミルキーピンク", "ミルキーブルー", "バターイエロー", "ベビーミント", "ミルキーホワイト"],
-    ["ガーネット", "ボルドー", "インディゴ", "ピーコックブルー", "マラカイトグリーン", "ダークチェリー", "ローズレッド", "瑠璃色", "孔雀色", "ワインパープル", "ディープティール", "紫紺"],
-    ["珊瑚色", "クリーム色", "蜜色", "亜麻色", "藤鼠", "鴇色", "若葉色", "浅葱色", "苺色", "菜の花色", "卯の花色", "桔梗色"]
+    ["赤", "ピンク", "桜ピンク", "ローズピンク", "ワインレッド"],
+    ["オレンジ", "黄色", "レモンイエロー", "クリーム色", "ゴールド"],
+    ["緑", "黄緑", "ミントグリーン", "オリーブグリーン", "深緑"],
+    ["青", "水色", "スカイブルー", "ネイビー", "ターコイズブルー"],
+    ["紫", "薄紫", "ラベンダー", "パステルパープル", "濃い紫"],
+    ["白", "アイボリー", "グレー", "シルバー", "黒"],
+    ["ベージュ", "茶色", "キャメル", "モカ", "チョコレートブラウン"],
+    ["ベビーピンク", "サーモンピンク", "コーラルピンク", "パステルイエロー", "パステルグリーン"]
   ];
   // 220種類の行動そのものを日替わりで表示する。系統を交互に巡らせる。
   const luckyActionGroups = [
@@ -103,8 +101,9 @@
   const dailyIndex = (birthday, offset) => (japanNow.getDate() - 1 + hashBirthday(birthday) + offset) % 31;
 
   function luckyColor(birthday) {
-    const index = (daySeed + hashBirthday(birthday)) % 120;
-    return luckyColorGroups[index % 10][Math.floor(index / 10)];
+    const groupCount = luckyColorGroups.length;
+    const index = (daySeed + hashBirthday(birthday)) % (groupCount * luckyColorGroups[0].length);
+    return luckyColorGroups[index % groupCount][Math.floor(index / groupCount)];
   }
 
   function luckyAction(birthday) {
@@ -139,7 +138,20 @@
   function showFortune(birthday) {
     const seed = hashBirthday(birthday) + daySeed;
     const month = japanNow.getMonth();
-    document.querySelector("#lucky-color").textContent = luckyColor(birthday);
+    const colorName = luckyColor(birthday);
+    document.querySelector("#lucky-color").textContent = colorName;
+    const colorPalettes = [
+      ["#d93c42", "#f19fbd", "#f4b9cd", "#e987ad", "#7e2945"],
+      ["#f5a344", "#f3d143", "#f4e45e", "#f5ebcd", "#c6a24a"],
+      ["#489769", "#a7ce60", "#b3dfcf", "#89935c", "#285b47"],
+      ["#3569bf", "#b0ddf1", "#90c8ec", "#263653", "#4ab5be"],
+      ["#8852a1", "#cfbce3", "#b6a0d7", "#e1d4ed", "#643b7e"],
+      ["#ffffff", "#f4efdc", "#96979e", "#c0c3c9", "#252525"],
+      ["#d8c5a9", "#805837", "#c39865", "#9c7b64", "#5c3e32"],
+      ["#f9d4df", "#f29d91", "#ee8c82", "#f2ebbc", "#d1e4ce"]
+    ];
+    const colorGroup = luckyColorGroups.findIndex((group) => group.includes(colorName));
+    if (colorGroup !== -1) document.querySelector("#color-swatch").style.backgroundColor = colorPalettes[colorGroup][luckyColorGroups[colorGroup].indexOf(colorName)];
     document.querySelector("#power-food").textContent = luckyFood(birthday);
     document.querySelector("#lucky-action").textContent = luckyAction(birthday);
     document.querySelector("#lucky-number").textContent = luckyNumber(seed);
@@ -321,6 +333,7 @@
   document.querySelector("#menu-detail-start").addEventListener("click", openFirstReading);
 
   firstButton.addEventListener("click", openFirstReading);
+  document.querySelector("#hero-first-reading").addEventListener("click", openFirstReading);
   readingForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if (!readingBirthday.value) return;
