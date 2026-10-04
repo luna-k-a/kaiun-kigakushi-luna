@@ -62,7 +62,8 @@
             <p>あなたの生年月日をもとに、毎日の開運ヒントをお届けします。</p>
           </div>
           <label for="birthday">生年月日</label>
-          <input id="birthday" name="birthday" type="date" required autocomplete="bday">
+          <input id="birthday" name="birthday" type="text" inputmode="numeric" maxlength="10" placeholder="例：19851025" required autocomplete="bday" aria-describedby="birthday-help">
+          <p class="birthday-help" id="birthday-help">西暦の年・月・日を8桁で入力してください。例：1985年10月25日 → 19851025</p>
           <button class="button button-primary" type="submit">生年月日で占う</button>
           <p class="privacy-note">入力した生年月日は、この端末の中だけに保存されます。</p>
         </form>
@@ -168,7 +169,8 @@
           <h3>あなたの生年月日を教えてください</h3>
           <p>ルナが、あなたの生まれ持った星を調べます。</p>
           <label for="reading-birthday">生年月日</label>
-          <input id="reading-birthday" name="reading-birthday" type="date" required autocomplete="bday">
+          <input id="reading-birthday" name="reading-birthday" type="text" inputmode="numeric" maxlength="10" placeholder="例：19851025" required autocomplete="bday" aria-describedby="reading-birthday-help">
+          <p class="birthday-help" id="reading-birthday-help">西暦の年・月・日を8桁で入力してください。例：1985年10月25日 → 19851025</p>
           <label for="reading-gender">性別</label>
           <select id="reading-gender" name="reading-gender" required>
             <option value="">選択してください</option>

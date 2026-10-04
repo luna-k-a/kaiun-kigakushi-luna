@@ -94,6 +94,32 @@
   const changeButton = document.querySelector("#birthday-change");
   const storageKey = "lunaBirthday";
 
+  function normalizeBirthday(value) {
+    const text = value.trim().replace(/[０-９]/g, (digit) => String.fromCharCode(digit.charCodeAt(0) - 0xfee0));
+    const digits = /^\d{8}$/.test(text) ? text : /^\d{4}[-/]\d{2}[-/]\d{2}$/.test(text) ? text.replace(/[-/]/g, "") : "";
+    if (!digits) return null;
+    const year = Number(digits.slice(0, 4));
+    const month = Number(digits.slice(4, 6));
+    const day = Number(digits.slice(6, 8));
+    const date = new Date(0);
+    date.setUTCFullYear(year, month - 1, day);
+    if (year < 1 || date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) return null;
+    const normalized = `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`;
+    const today = `${japanNow.getFullYear()}-${String(japanNow.getMonth() + 1).padStart(2, "0")}-${String(japanNow.getDate()).padStart(2, "0")}`;
+    return normalized <= today ? normalized : null;
+  }
+
+  function readBirthday(field) {
+    const birthday = normalizeBirthday(field.value);
+    field.setCustomValidity(birthday ? "" : "実在する生年月日を西暦8桁で入力してください。例：19851025（未来の日付は入力できません）");
+    if (!birthday) { field.reportValidity(); return null; }
+    field.value = birthday.replaceAll("-", "");
+    return birthday;
+  }
+  document.querySelectorAll("#birthday, #reading-birthday").forEach((field) => {
+    field.addEventListener("input", () => field.setCustomValidity(""));
+  });
+
   if (dateEl) dateEl.textContent = `${japanNow.getFullYear()}年${japanNow.getMonth() + 1}月${japanNow.getDate()}日`;
   if (yearEl) yearEl.textContent = japanNow.getFullYear();
 
@@ -180,13 +206,14 @@
   trigger.addEventListener("click", openDailyFortune);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (!input.value) return;
-    localStorage.setItem(storageKey, input.value);
-    showFortune(input.value);
+    const birthday = readBirthday(input);
+    if (!birthday) return;
+    localStorage.setItem(storageKey, birthday);
+    showFortune(birthday);
   });
   changeButton.addEventListener("click", () => {
     const savedBirthday = localStorage.getItem(storageKey) || "";
-    input.value = savedBirthday;
+    input.value = savedBirthday.replaceAll("-", "");
     result.hidden = true;
     form.hidden = false;
     input.focus();
@@ -313,7 +340,7 @@
     readingResult.hidden = true;
     readingForm.hidden = false;
     const saved = localStorage.getItem(storageKey);
-    if (saved) readingBirthday.value = saved;
+    if (saved) readingBirthday.value = saved.replaceAll("-", "");
     firstPanel.scrollIntoView({ behavior: "smooth", block: "center" });
     readingBirthday.focus({ preventScroll: true });
   }
@@ -336,10 +363,11 @@
   document.querySelector("#hero-first-reading").addEventListener("click", openFirstReading);
   readingForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (!readingBirthday.value) return;
+    const birthday = readBirthday(readingBirthday);
+    if (!birthday) return;
     if (!readingGender.value) return;
-    currentStars = calculateStars(readingBirthday.value, readingGender.value);
-    localStorage.setItem(storageKey, readingBirthday.value);
+    currentStars = calculateStars(birthday, readingGender.value);
+    localStorage.setItem(storageKey, birthday);
     document.querySelector("#honmei-star").textContent = currentStars.honmei;
     document.querySelector("#getsumei-star").textContent = currentStars.getsumei;
     document.querySelector("#keisha-star").textContent = currentStars.keisha;

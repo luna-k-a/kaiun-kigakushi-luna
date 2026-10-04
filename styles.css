@@ -400,6 +400,7 @@ footer { padding: 48px 24px; border-top: 1px solid rgba(173,121,38,.22); text-al
 }
 
 .mobile-copy-break { display: none; }
+.birthday-help { margin: 8px 0 16px; font-size: .875rem; line-height: 1.7; color: #675b75; }
 @media (max-width: 700px) {
   .mobile-copy-break { display: inline; }
 }
