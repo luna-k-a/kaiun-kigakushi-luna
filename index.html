@@ -19,7 +19,8 @@
     </a>
     <nav aria-label="メインメニュー">
       <a href="#daily">今日の占い</a>
-      <a href="#reading">鑑定内容</a>
+      <a href="#reading">無料基本鑑定</a>
+      <a href="#personal-reading">LINE個別鑑定</a>
       <a href="#about">ご案内</a>
     </nav>
   </header>
@@ -96,7 +97,7 @@
       <div class="guide-grid">
         <article class="guide-card crystal-card">
           <div class="guide-image">
-            <img src="./luna-crystal.jpeg" alt="水晶玉を持つ鑑定士ルナ" width="1024" height="1536" loading="lazy">
+            <img src="./assets/luna-crystal.jpeg" alt="水晶玉を持つ鑑定士ルナ" width="1024" height="1536" loading="lazy">
           </div>
           <div class="guide-copy">
             <span class="guide-number">01</span>
@@ -113,7 +114,7 @@
 
         <article class="guide-card wand-card">
           <div class="guide-image">
-            <img src="./luna-wand.jpeg" alt="杖を持つ開運アドバイザーのルナ" width="1024" height="1536" loading="lazy">
+            <img src="./assets/luna-wand.jpeg" alt="杖を持つ開運アドバイザーのルナ" width="1024" height="1536" loading="lazy">
           </div>
           <div class="guide-copy">
             <span class="guide-number">02</span>
@@ -132,26 +133,10 @@
 
     <section class="reading-section" id="reading" aria-labelledby="reading-title">
       <div class="section-heading">
-        <div class="section-kicker">READING MENU</div>
-        <h2 id="reading-title">ルナに相談できること</h2>
-        <p>気になるテーマから、<br class="mobile-copy-break">今のあなたに必要なヒントを見つけてください。</p>
-        <p class="menu-availability">各テーマのご案内をご覧いただけます。<br>現在ご利用いただけるのは、<br class="mobile-copy-break">毎日の占いです。</p>
+        <div class="section-kicker">FREE BASIC READING</div>
+        <h2 id="reading-title">あなたの魅力を知る、無料基本鑑定</h2>
+        <p>まずはあなたの星から、<br>生まれ持った本質と魅力を見つけてみませんか。</p>
       </div>
-      <div class="menu-grid">
-        <article><button class="menu-card-button" type="button" data-topic="work" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">💼</span><span class="menu-name">仕事運</span></span><span class="menu-summary">強みを生かせる働き方と、動くタイミング。</span><span class="menu-more">テーマのご案内</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
-        <article><button class="menu-card-button" type="button" data-topic="money" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">💰</span><span class="menu-name">金運</span></span><span class="menu-summary">お金との付き合い方と、豊かさを育てる行動。</span><span class="menu-more">テーマのご案内</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
-        <article><button class="menu-card-button" type="button" data-topic="love" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">♥</span><span class="menu-name">恋愛・結婚運</span></span><span class="menu-summary">愛情の傾向と、心地よい関係を育てるコツ。</span><span class="menu-more">テーマのご案内</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
-        <article><button class="menu-card-button" type="button" data-topic="compatibility" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">🤝</span><span class="menu-name">相性鑑定</span></span><span class="menu-summary">ふたりの違いを知り、関係を整えるヒント。</span><span class="menu-more">テーマのご案内</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
-        <article><button class="menu-card-button" type="button" data-topic="year" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">📅</span><span class="menu-name">今年の運勢</span></span><span class="menu-summary">今年のテーマと、運気の波に乗る過ごし方。</span><span class="menu-more">テーマのご案内</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
-        <article><button class="menu-card-button" type="button" data-topic="direction" aria-controls="menu-detail" aria-expanded="false"><span class="menu-title"><span class="menu-icon" aria-hidden="true">🧭</span><span class="menu-name">吉方位</span></span><span class="menu-summary">目的に合わせて、運をひらく方位をご案内。</span><span class="menu-more">テーマのご案内</span></button><span class="menu-sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></span></article>
-      </div>
-      <section class="menu-detail" id="menu-detail" aria-labelledby="menu-detail-title" hidden>
-        <span class="form-kicker">READING MENU</span>
-        <h3 id="menu-detail-title" tabindex="-1"></h3>
-        <p id="menu-detail-copy"></p>
-        <p class="menu-detail-note">まずは無料の基本鑑定で、あなたの本命星・月命星・傾斜・干支を知ることができます。</p>
-        <button class="button button-primary" id="menu-detail-start" type="button">無料基本鑑定へ進む</button>
-      </section>
       <div class="first-reading">
         <div class="first-reading-copy">
           <span class="first-reading-label">LUNA'S FIRST READING</span>
@@ -207,8 +192,42 @@
           <p class="reading-opening">水晶玉に、あなたの星の輝きが映し出されています…</p>
           <div class="reading-text" id="reading-text"></div>
           <p class="reading-closing">あなたらしさは、幸運をひらくいちばん大切な力です。今日からその魅力を、少しずつ輝かせていきましょう。</p>
+          <div class="reading-next"><p>あなたの星を、もう一歩深く。<br>ケンケンが個別のお悩みに寄り添います。</p><a class="button button-primary" href="#personal-reading">有料のLINE個別鑑定を見る</a></div>
           <button class="birthday-change" id="restart-reading" type="button">もう一度鑑定する</button>
         </section>
+      </div>
+    </section>
+
+    <section class="personal-reading" id="personal-reading" aria-labelledby="personal-reading-title">
+      <div class="section-heading">
+        <div class="section-kicker">PERSONAL READING WITH KENKEN</div>
+        <h2 id="personal-reading-title">あなたの星を、もう一歩深く。</h2>
+        <p>生まれ持った魅力を知り、<br>これからの運氣を日々の選択に生かすために。</p>
+        <p>ケンケンが、一人ひとりのお悩みに寄り添う<br class="mobile-copy-break">有料のLINE個別鑑定を承ります。</p>
+      </div>
+      <div class="personal-plan-grid">
+        <article class="personal-plan"><span class="plan-symbol" aria-hidden="true">✦</span><p class="plan-caption">あなたを幅広く見つめる</p><h3>総合鑑定</h3><p class="plan-price">1000<span>円</span></p><p>本質や魅力をもとに、<br>仕事・恋愛・人間関係などを<br>総合的に読み解きます。</p></article>
+        <article class="personal-plan"><span class="plan-symbol" aria-hidden="true">☾</span><p class="plan-caption">ひとつのお悩みを丁寧に</p><h3>じっくり鑑定</h3><p class="plan-price">1000<span>円</span></p><p>1つのお悩みを深く読み解き、<br>これからの一歩につながる行動のヒントを<br>お伝えします。</p></article>
+        <article class="personal-plan"><span class="plan-symbol" aria-hidden="true">✧</span><p class="plan-caption">鑑定後の一歩を支える</p><h3>開運フォロー</h3><p class="plan-price">2000<span>円</span></p><p>鑑定で見つけたヒントを<br>行動につなげられるよう、<br>九星氣學を元に<br>開運のアドバイスをさせていただきます。</p></article>
+      </div>
+      <div class="reading-explanation-panel">
+        <span class="reading-explanation-sparkles" aria-hidden="true">✦　✧　✦</span>
+        <p class="plan-shared-note">※すべてのコースに、<br>鑑定内容をまとめた解説画像が付きます。</p>
+        <figure class="reading-explanation-sample">
+          <img src="assets/reading-explanation-sample.jpeg" alt="鑑定内容をまとめた解説画像のサンプル" loading="lazy">
+        </figure>
+      </div>
+      <section class="review-preview" aria-labelledby="review-preview-title">
+        <div class="review-preview-heading"><span class="section-kicker">VOICE DESIGN SAMPLE</span><h3 id="review-preview-title">お客様の感想 — 掲載イメージ</h3><p>以下はデザイン確認用に作成した架空の感想です。実際のお客様の体験談ではありません。</p></div>
+        <div class="review-preview-grid">
+          <article class="review-preview-card"><span class="review-sample-label">架空の感想・サンプル01</span><h4>自分の良さに、目を向けられました。</h4><p>「自分では当たり前だと思っていたことを、魅力として言葉にしてもらえて嬉しかったです。仕事の悩みも丁寧に聞いていただき、まず何から始めたいかを考えるきっかけになりました。」</p><p class="review-topic">相談テーマ例：仕事・自分の魅力</p></article>
+          <article class="review-preview-card"><span class="review-sample-label">架空の感想・サンプル02</span><h4>自分のペースで進もうと思えました。</h4><p>「人間関係で考えすぎていましたが、自分と相手の違いを見つめ直すヒントをいただきました。優しい言葉にほっとして、無理をせず少しずつ向き合ってみようと思えました。」</p><p class="review-topic">相談テーマ例：人間関係</p></article>
+        </div>
+      </section>
+      <div class="line-consultation">
+        <h3>あなたに合う鑑定を、一緒に。</h3>
+        <p>コース選びに迷う方も、LINEからお気軽にお問い合わせください。<br>鑑定内容と料金をご確認いただいてから、お申し込みいただけます。</p>
+        <a class="button button-line" href="https://line.me/R/ti/p/TzT7fB9VB3" target="_top">LINEで個別鑑定について相談する</a>
       </div>
     </section>
 
@@ -233,7 +252,7 @@
         <details><summary>無料でどこまで占えますか？</summary><p>★毎日の占いでは、ラッキーカラー・パワーフード・開運アクション・ラッキーナンバー・今日の一言をご覧いただけます。<br>★基本鑑定では、本命星・月命星・傾斜・干支と、あなたの本質や魅力をお伝えします。</p><p>どちらも何度でも無料にて、お楽しみいただけます。</p></details>
         <details><summary>生年月日はどこに保存されますか？</summary><p>生年月日は、お使いの端末のブラウザー内に保存されます。占いのためにサーバーへ送信することはありません。別の端末やブラウザーでは再入力が必要です。共有の端末では、入力した情報が次の利用者に表示される場合があります。</p></details>
         <details><summary>本命星・月命星・傾斜とは何ですか？</summary><p>本命星は生まれた年から読み解く基本的な性質、月命星は生まれた月から読み解く内面の性質、傾斜は本命星と月命星の組み合わせから読み解く心の傾向です。ひとつの星だけで決めつけず、それぞれを重ねてあなたの魅力を見つめます。</p></details>
-        <details><summary>相性鑑定や吉方位も利用できますか？</summary><p>現在はテーマのご案内をご覧いただけます。ふたりの生年月日を使う相性鑑定、年運の個別鑑定、移動先や時期を使う吉方位の計算は、無料基本鑑定には含まれていません。</p></details>
+        <details><summary>さらに詳しく相談したいときは？</summary><p>ケンケンによる有料のLINE個別鑑定をご案内しています。ご希望のテーマや対応できる鑑定内容は、お申し込み前にご確認ください。現在は試作表示のため、料金は仮案で、LINEの受付先も未設定です。</p></details>
       </div>
     </section>
 
