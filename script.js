@@ -267,18 +267,6 @@
   };
   const firstButton = document.querySelector("#first-reading-button");
   const firstPanel = document.querySelector("#first-reading-panel");
-  const menuDetail = document.querySelector("#menu-detail");
-  const menuDetailTitle = document.querySelector("#menu-detail-title");
-  const menuDetailCopy = document.querySelector("#menu-detail-copy");
-  const menuButtons = document.querySelectorAll(".menu-card-button");
-  const menuTopics = {
-    work: ["仕事運", "あなたの強みや働き方を見つめ、仕事で一歩踏み出すときに大切にしたいことを考えるテーマです。"],
-    money: ["金運", "お金との向き合い方や、日々の選択の中で豊かさを育てるヒントを考えるテーマです。"],
-    love: ["恋愛・結婚運", "あなたの愛情の表し方を知り、無理のない心地よい関係を育てるためのテーマです。"],
-    compatibility: ["相性鑑定", "ふたりそれぞれの特徴を知り、違いを生かした関係づくりを考えるテーマです。相手の生年月日を使う個別の相性結果は、現在の無料基本鑑定には含まれません。"],
-    year: ["今年の運勢", "一年の過ごし方や、目標に向かうための行動を見つめるテーマです。年運の個別結果は、現在の無料基本鑑定には含まれません。"],
-    direction: ["吉方位", "出かける目的や時期に合わせて方位を考えるテーマです。方位の個別計算は、現在の無料基本鑑定には含まれません。"]
-  };
   const readingForm = document.querySelector("#reading-birthday-form");
   const readingBirthday = document.querySelector("#reading-birthday");
   const readingGender = document.querySelector("#reading-gender");
@@ -345,19 +333,6 @@
     readingBirthday.focus({ preventScroll: true });
   }
 
-  menuButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const topic = menuTopics[button.dataset.topic];
-      if (!topic) return;
-      menuButtons.forEach((item) => item.setAttribute("aria-expanded", String(item === button)));
-      menuDetailTitle.textContent = topic[0];
-      menuDetailCopy.textContent = topic[1];
-      menuDetail.hidden = false;
-      menuDetail.scrollIntoView({ behavior: "smooth", block: "center" });
-      menuDetailTitle.focus({ preventScroll: true });
-    });
-  });
-  document.querySelector("#menu-detail-start").addEventListener("click", openFirstReading);
 
   firstButton.addEventListener("click", openFirstReading);
   document.querySelector("#hero-first-reading").addEventListener("click", openFirstReading);

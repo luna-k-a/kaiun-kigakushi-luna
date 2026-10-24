@@ -405,6 +405,60 @@ footer { padding: 48px 24px; border-top: 1px solid rgba(173,121,38,.22); text-al
   .mobile-copy-break { display: inline; }
 }
 
+.personal-reading { max-width: 1180px; margin: 0 auto; padding: 72px 32px 96px; scroll-margin-top: 24px; }
+.personal-reading .section-heading { margin-bottom: 26px; }
+#personal-reading-title { white-space: nowrap; font-size: clamp(1rem, 6vw, 3.35rem); letter-spacing: 0; }
+.personal-plan-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.personal-plan { padding: 30px 24px; border: 1px solid #dfcde8; border-radius: 28px; background: linear-gradient(145deg, #fffdfd, #f8f1ff); text-align: center; box-shadow: 0 12px 30px #4e2f7010; }
+.personal-plan:nth-child(2) { border-color: #c9a2c3; background: linear-gradient(145deg, #fff9fc, #f4ebff); }
+.personal-plan:nth-child(3) { border-color: #dfcba6; background: linear-gradient(145deg, #fffdf8, #fff4f8); }
+.plan-symbol { display: block; color: var(--gold); font-size: 1.8rem; line-height: 1.3; margin-bottom: 18px; }
+.plan-caption { color: var(--muted); font-size: .83rem; margin-bottom: 6px; }
+.personal-plan h3 { font-family: "Yu Mincho", serif; font-size: 1.45rem; margin-bottom: 12px; }
+.plan-price { color: #76508b; font-family: "Yu Mincho", serif; font-size: 2.3rem; line-height: 1.4; margin-bottom: 20px; }
+.plan-price span { font-size: 1rem; margin-left: 5px; }
+.personal-plan > p:last-child { color: var(--muted); font-size: .95rem; text-align: left; margin: 0; }
+.personal-plan:first-child > p:last-child { text-align: center; }
+.personal-plan:nth-child(2) > p:last-child { text-align: center; }
+.personal-plan:nth-child(3) > p:last-child { text-align: center; }
+.reading-explanation-panel { position: relative; width: min(100%, 820px); margin: 28px auto 0; padding: 28px; overflow: hidden; border: 1px solid #d7b978; border-radius: 30px; background: radial-gradient(circle at 8% 12%, #f4d8ef80 0 34px, transparent 35px), radial-gradient(circle at 94% 8%, #f7e7b980 0 42px, transparent 43px), linear-gradient(145deg, #fffdf9, #fbf2ff); box-shadow: 0 16px 38px #4e2f701b, inset 0 0 0 5px #ffffff80; }
+.reading-explanation-sparkles { display: block; margin-bottom: 8px; color: #b78a2d; font-size: 1.05rem; letter-spacing: .18em; text-align: center; }
+.plan-shared-note { margin: 0 0 20px; color: #684078; font-size: 1.05rem; font-weight: 700; line-height: 1.9; text-align: center; }
+.reading-explanation-sample { width: 100%; margin: 0; }
+.reading-explanation-sample img { display: block; width: 100%; height: auto; border: 1px solid #e7d5bb; border-radius: 24px; box-shadow: 0 14px 34px #4e2f7020; }
+.line-consultation { margin-top: 32px; padding: 36px 24px; border: 1px solid #dccbe6; border-radius: 28px; background: #fffdfed9; text-align: center; }
+.line-consultation h3 { font-family: "Yu Mincho", serif; font-size: 1.5rem; }
+.line-consultation > p { color: var(--muted); }
+.button-line { max-width: 100%; cursor: pointer; white-space: normal; font: inherit; font-weight: 700; color: #fff; background: #287650; border-color: #287650; box-shadow: 0 8px 24px #28765020; }
+.reading-next { margin: 28px 0; padding: 24px 18px; border: 1px solid #dfcde8; border-radius: 20px; background: #fcf6ff; text-align: center; }
+.reading-next p { margin-bottom: 16px; }
+@media (max-width: 700px) {
+  .personal-reading { padding: 48px 16px 64px; }
+  .personal-plan-grid { grid-template-columns: 1fr; gap: 16px; }
+  .personal-plan { padding: 24px; }
+  .plan-symbol { margin-bottom: 10px; }
+  .plan-price { margin-bottom: 12px; }
+  .reading-explanation-panel { margin-top: 22px; padding: 18px; border-radius: 24px; }
+  .plan-shared-note { margin-bottom: 16px; font-size: .98rem; }
+  .reading-explanation-sample img { border-radius: 18px; }
+  .line-consultation { padding: 28px 18px; }
+  .line-consultation h3 { font-size: 1.3rem; }
+  .button-line { width: 100%; padding-inline: 14px; font-size: .94rem; }
+}
+
+.review-preview { margin-top: 48px; }
+.review-preview-heading { text-align: center; margin-bottom: 24px; }
+.review-preview-heading h3 { margin: 8px 0 12px; font-family: "Yu Mincho", serif; font-size: 1.45rem; }
+.review-preview-heading > p { max-width: 620px; margin: 0 auto; color: var(--muted); font-size: .88rem; }
+.review-preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.review-preview-card { padding: 28px; border: 1px solid #e2d0e7; border-radius: 26px; background: linear-gradient(145deg, #fffdfd, #fff4fa); box-shadow: 0 8px 24px #4e2f700a; }
+.review-preview-card:nth-child(2) { background: linear-gradient(145deg, #fffdfd, #f6f0ff); }
+.review-sample-label { display: inline-block; padding: 4px 12px; border-radius: 999px; background: #f0e5f4; color: #71527d; font-size: .78rem; }
+.review-preview-card h4 { margin: 18px 0 12px; font-family: "Yu Mincho", serif; font-size: 1.15rem; line-height: 1.7; }
+.review-preview-card p { color: var(--muted); font-size: .95rem; line-height: 1.9; }
+.review-preview-card .review-topic { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid #e8dbea; font-size: .83rem; }
+@media (max-width: 700px) { .review-preview-grid { grid-template-columns: 1fr; gap: 16px; } .review-preview-card { padding: 24px 20px; } }
+
 /* 読む場所は落ち着いた余白、入口と今日のヒントに輝きを。 */
 .hero-service-note { margin: 20px auto 0; max-width: 36rem; font-size: .9rem; line-height: 1.8; color: #675b75; }
 .menu-availability { max-width: 42rem; margin: 20px auto 0; padding: 16px 22px; border: 1px solid #e3d4e9; border-radius: 18px; background: #fffafc; color: #675b75; font-size: .94rem !important; line-height: 1.8; }
