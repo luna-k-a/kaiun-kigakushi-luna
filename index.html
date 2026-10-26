@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./styles.css">
   <script src="./script.js" defer></script>
 </head>
-<body>
+<body id="page-top">
   <a class="skip-link" href="#main">本文へ移動</a>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="開運氣學師ルナの毎日占い トップへ">
@@ -19,6 +19,7 @@
     </a>
     <nav aria-label="メインメニュー">
       <a href="#daily">今日の占い</a>
+      <a href="#maya-numerology">マヤ暦・数秘</a>
       <a href="#reading">無料基本鑑定</a>
       <a href="#personal-reading">LINE個別鑑定</a>
       <a href="#about">ご案内</a>
@@ -26,7 +27,51 @@
   </header>
 
   <main id="main">
+    <section class="site-welcome" aria-labelledby="welcome-title">
+      <div class="welcome-letter">
+        <div class="welcome-stardust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="welcome-jewels" aria-hidden="true">
+          <svg class="welcome-moon-art" viewBox="0 0 180 64" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <defs><linearGradient id="welcome-moon-gold" x1="72" y1="9" x2="108" y2="51" gradientUnits="userSpaceOnUse"><stop stop-color="#f2dda5"/><stop offset=".5" stop-color="#c59a49"/><stop offset="1" stop-color="#987029"/></linearGradient></defs>
+            <circle cx="90" cy="31" r="27" stroke="#c9a667" stroke-opacity=".25" stroke-width=".6" stroke-dasharray="1 4"/>
+            <path d="M98 11C81 12 73 28 82 41C88 50 101 51 110 42C95 44 84 25 98 11Z" fill="url(#welcome-moon-gold)" fill-opacity=".75" stroke="url(#welcome-moon-gold)" stroke-width=".8" stroke-linejoin="round"/>
+            <path d="M91 16C80 24 79 36 88 43" stroke="#fff8dc" stroke-width=".7" stroke-linecap="round"/>
+            <path d="M25 32H52M128 32H155" stroke="#c9a667" stroke-opacity=".45" stroke-width=".6"/>
+            <path d="M18 24L20 30L26 32L20 34L18 40L16 34L10 32L16 30ZM162 24L164 30L170 32L164 34L162 40L160 34L154 32L160 30Z" stroke="#bb934b" stroke-width=".7"/>
+            <path d="M108 16L109.5 20.5L114 22L109.5 23.5L108 28L106.5 23.5L102 22L106.5 20.5Z" fill="#c695af" fill-opacity=".8"/>
+            <circle cx="61" cy="25" r="1" fill="#c7a36a"/><circle cx="119" cy="39" r="1" fill="#c7a36a"/>
+            <path d="M90 57L92 60L90 63L88 60Z" fill="#c8a56c"/>
+          </svg>
+        </span>
+        <h2 id="welcome-title">内に秘めた可能性を、<br class="mobile-copy-break">あなた自身の力に。</h2>
+        <p class="welcome-message">自分らしく歩む毎日へ、<br class="mobile-copy-break">幸せのヒントをお届けします。</p>
+        <div class="welcome-rule" aria-hidden="true"><span>✦</span></div>
+        <p class="welcome-signature">開運氣學師のルナとケンケンが<br>あなたの人生を明るく照らします</p>
+        <span class="welcome-corner welcome-corner-left" aria-hidden="true">✦<small>✧</small></span>
+        <span class="welcome-corner welcome-corner-right" aria-hidden="true">✧<small>✦</small></span>
+      </div>
+    </section>
+    <section class="wand-intro" aria-labelledby="wand-intro-title">
+        <article class="guide-card wand-card">
+          <div class="guide-image">
+            <img src="luna-wand.jpeg" alt="杖を持つ開運アドバイザーのルナ" width="1024" height="1536" loading="lazy">
+          </div>
+          <div class="guide-copy">
+            <p class="role">これからの一歩を照らす</p>
+            <h2 id="wand-intro-title">杖のルナ</h2>
+            <p>今のあなたに必要な運の生かし方を、<br>身近なテーマから、これからの一歩を<br>やさしく照らします。</p>
+            <ul>
+              <li>毎日できる開運アクション</li>
+              <li>運気を生かすタイミング</li>
+              <li>迷ったときの進み方</li>
+            </ul>
+          </div>
+        </article>
+    </section>
+
     <section class="hero" id="top">
+      <div class="mobile-starlight hero-gap-upper" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="mobile-starlight hero-gap-lower" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="stars" aria-hidden="true"></div>
       <div class="constellation constellation-left" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span></div>
       <div class="constellation constellation-right" aria-hidden="true"><span>✧</span><span>✦</span><span>✧</span><span>✦</span></div>
@@ -35,7 +80,10 @@
         <h1><span>あなたの星を知って、</span><em>毎日をもっと幸運に。</em></h1>
         <p class="lead">生まれもった魅力も、<br>迷っている今も、<br><span>あなたらしく運を開くヒントをお届けします</span></p>
         <div class="hero-actions">
-      <a class="button button-primary" href="#daily">毎日の占いを見る</a>
+          <div class="hero-fortune-links">
+            <a class="button button-primary" href="#daily">毎日の占いを見る</a>
+            <a class="button button-primary" href="#compatibility">相性占いを見る</a>
+          </div>
           <button class="button button-ghost" id="hero-first-reading" type="button" aria-controls="first-reading-panel">無料で自分の星を知る</button>
         </div>
         <p class="hero-service-note">生年月日から、<br>あなたの魅力と今日の開運ヒントを。<br>毎日の占いは、何度でも無料です。</p>
@@ -43,7 +91,7 @@
       <div class="scroll-cue" aria-hidden="true"><span></span>SCROLL</div>
     </section>
 
-    <section class="daily-section" id="daily" aria-labelledby="daily-title">
+    <section class="daily-section" id="daily" aria-labelledby="daily-title"><div class="mobile-starlight starlight-top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="mobile-starlight starlight-bottom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="section-kicker">DAILY FORTUNE</div>
       <h2 id="daily-title">ルナの毎日占い</h2>
       <p class="daily-intro">生年月日から、<br>今日のあなたにぴったりな<br>開運ヒントをお届けします。</p>
@@ -63,7 +111,7 @@
             <p>あなたの生年月日をもとに、毎日の開運ヒントをお届けします。</p>
           </div>
           <label for="birthday">生年月日</label>
-          <input id="birthday" name="birthday" type="text" inputmode="numeric" maxlength="10" placeholder="例：19851025" required autocomplete="bday" aria-describedby="birthday-help">
+          <input id="birthday" name="birthday" type="text" inputmode="numeric" maxlength="10" placeholder="例：20260613" required autocomplete="bday" aria-describedby="birthday-help">
           <p class="birthday-help" id="birthday-help">西暦の年・月・日を8桁で入力してください。例：2026年6月13日 → 20260613</p>
           <button class="button button-primary" type="submit">生年月日で占う</button>
           <p class="privacy-note">入力した生年月日は、この端末の中だけに保存されます。</p>
@@ -88,11 +136,13 @@
       </div>
     </section>
 
-    <section class="guides" aria-labelledby="guides-title">
+    <section class="compat-section" id="compatibility" aria-labelledby="compat-title"><div class="mobile-starlight starlight-top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="mobile-starlight starlight-bottom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="section-heading"><div class="section-kicker">TWO STARS, ONE CONNECTION</div><h2 id="compat-title">ルナの相性占い</h2><p>ふたりの違いも、魅力に変えて。<br>心地よいつながりを育むヒントをお届けします。</p></div><div class="compat-panel"><form id="compat-form"><label for="compat-you">あなたの生年月日</label><input id="compat-you" type="text" inputmode="numeric" maxlength="8" pattern="[0-9０-９]{8}" placeholder="例：20260613" required><label for="compat-other">お相手の生年月日</label><input id="compat-other" type="text" inputmode="numeric" maxlength="8" pattern="[0-9０-９]{8}" placeholder="例：20260613" required><p class="compat-note">年月日を続けて8桁で入力してください。名前や性別は不要です。</p><button class="button" type="submit">無料でふたりの相性を見る</button><p id="compat-error" role="alert"></p></form><div id="compat-result" tabindex="-1" hidden><div class="compat-stars"><article><small>あなたの本命星</small><h3 id="compat-star-you"></h3><p id="compat-you-trait"></p></article><span aria-hidden="true">✧</span><article><small>お相手の本命星</small><h3 id="compat-star-other"></h3><p id="compat-other-trait"></p></article></div><h3 id="compat-relation"></h3><p id="compat-message"></p><div class="compat-advice"><strong>仲良くなるためのヒント</strong><p id="compat-tip"></p></div><button type="button" class="button" id="compat-reset">別のふたりで占う</button><div class="reading-next"><p>ふたりの相性を、もう一歩深く。<br><span class="compat-reassurance">ケンケンが個別のお悩みに寄り添います。</span></p><a class="button button-primary" href="#personal-reading">有料のLINE個別鑑定を見る</a></div></div><details class="compat-note"><summary>この相性占いについて</summary><p>本命星の五行（木・火・土・金・水）の関係から読む簡易鑑定です。本命星は本サイトの基本鑑定と同じ算出ルールで、2月4日を年の切り替わりとして扱います。実際の立春時刻は考慮しません。月命星・傾斜・干支を組み合わせた総合相性ではありません。</p><p>恋愛・友人・家族など、性別を問わず楽しめます。関係の良し悪しや未来を決めるものではありません。入力した2人の生年月日は、この相性占いでは保存・送信しません。</p></details></div></section>
+
+    <section class="guides" aria-labelledby="guides-title"><div class="mobile-starlight starlight-top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="mobile-starlight starlight-bottom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="section-heading">
         <div class="section-kicker">TWO SIDES OF LUNA</div>
         <h2 id="guides-title">ルナが、あなたを導きます</h2>
-        <p>水晶玉であなたの魅力を読み解き、<br>杖でこれからの一歩をやさしく照らします。</p>
+        <p>水晶玉であなたの魅力を読み解き、<br>これからの一歩をやさしく照らします。</p>
       </div>
       <div class="guide-grid">
         <article class="guide-card crystal-card">
@@ -100,7 +150,6 @@
             <img src="luna-crystal.jpeg" alt="水晶玉を持つ鑑定士ルナ" width="1024" height="1536" loading="lazy">
           </div>
           <div class="guide-copy">
-            <span class="guide-number">01</span>
             <p class="role">あなた自身を読み解く</p>
             <h3>水晶玉のルナ</h3>
             <p>生年月日から、<br class="mobile-copy-break">本命星・月命星・傾斜・60分類干支を組み合わせ、あなたの本質や魅力を丁寧に読み解きます。</p>
@@ -112,26 +161,17 @@
           </div>
         </article>
 
-        <article class="guide-card wand-card">
-          <div class="guide-image">
-            <img src="luna-wand.jpeg" alt="杖を持つ開運アドバイザーのルナ" width="1024" height="1536" loading="lazy">
-          </div>
-          <div class="guide-copy">
-            <span class="guide-number">02</span>
-            <p class="role">これからの一歩を照らす</p>
-            <h3>杖のルナ</h3>
-            <p>今のあなたに必要な運の生かし方を、<br class="mobile-copy-break">仕事・お金・恋愛・方位など、身近なテーマから、これからの一歩を、やさしく照らします。</p>
-            <ul>
-              <li>毎日できる開運アクション</li>
-              <li>運気を生かすタイミング</li>
-              <li>迷ったときの進み方</li>
-            </ul>
-          </div>
-        </article>
       </div>
     </section>
 
-    <section class="reading-section" id="reading" aria-labelledby="reading-title">
+    <section class="maya-section" id="maya-numerology" aria-labelledby="maya-title"><div class="mobile-starlight starlight-top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="mobile-starlight starlight-bottom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="section-heading"><div class="section-kicker">MAYA × NUMEROLOGY</div><h2 id="maya-title">ルナのマヤ暦×数秘鑑定</h2><p>生年月日から、あなたらしさを見つめて。<br>ふたつの占いで、魅力と強みのヒントをお届けします。</p></div>
+      <div class="maya-panel"><form id="maya-form"><label for="maya-birthday">あなたの生年月日</label><input id="maya-birthday" type="text" inputmode="numeric" pattern="[0-9０-９]{8}" maxlength="8" placeholder="例：20260613" aria-describedby="maya-birthday-help" required><p id="maya-birthday-help" class="maya-small">西暦・月・日を続けて、8桁の数字で入力してください（2026年6月13日 → 20260613）。</p><div id="maya-leap" hidden><label for="maya-period">2月29日生まれの方：出生時間帯</label><select id="maya-period"><option value="">選んでください</option><option value="am">午前（正午より前）</option><option value="pm">午後（正午以降）</option><option value="unknown">不明</option></select><p>この方式では、午前は2月28日・午後は3月1日としてマヤ暦を読みます。不明の場合は両方の候補を表示します。</p></div><button class="button" type="submit">無料でマヤ暦と数秘を読み解く</button><p id="maya-error" role="alert"></p></form>
+      <div id="maya-result" tabindex="-1" aria-labelledby="maya-result-title" hidden><h3 id="maya-result-title">あなたのマヤ暦と数秘</h3><p id="maya-result-date"></p><div class="maya-result-grid"><article><p class="section-kicker">MAYA / DREAMSPELL</p><h4 id="maya-kin"></h4><dl><dt>太陽の紋章</dt><dd id="maya-seal"></dd><dt>ウェイブスペル</dt><dd id="maya-wave"></dd><dt>銀河の音</dt><dd id="maya-tone"></dd></dl><p id="maya-message"></p></article><article><p class="section-kicker">NUMEROLOGY</p><h4 id="numerology-number"></h4><p id="numerology-message"></p><p id="numerology-process" class="maya-small"></p></article></div><div class="maya-combined"><h4>ふたつを重ねた、あなたへのヒント</h4><p id="maya-combined"></p><strong>幸せにつながる一歩</strong><p id="maya-action"></p></div><button class="button" id="maya-again" type="button">別の生年月日で鑑定する</button><div class="reading-next"><p>九星氣學で、あなたをもう一歩深く。<br><span class="reading-next-reassurance">ケンケンが個別のお悩みに寄り添います。</span></p><a class="button button-primary" href="#personal-reading">有料のLINE個別鑑定を見る</a></div></div>
+      <details class="maya-method"><summary>計算方式と、この鑑定について</summary><p>マヤ暦は現代のドリームスペル系です。伝統的なマヤのツォルキンとは異なります。1987年7月26日＝KIN34を基準とし、2月29日を通常の日数に含めず計算します。出生時間帯が不明の2月29日は、2月28日・3月1日の候補を併記します。</p><p>数秘は西暦の生年月日の全桁を合計し、1桁になるまで足します。途中の11・22・33はそのまま残す独自の採用ルールです。年月日を別々に還元する方式とは結果が異なる場合があります。</p><p>ふたつの占術を組み合わせたルナ独自の読み解きです。性格や未来を科学的に判定するものではありません。生年月日はこの鑑定では保存・送信しません。</p><p><a href="https://lawoftime.org/decode/" target="_blank" rel="noopener noreferrer">採用方式の参考：Foundation for the Law of Time</a></p></details><noscript><p>鑑定にはJavaScriptを有効にしてください。</p></noscript></div>
+    </section>
+
+    <section class="reading-section" id="reading" aria-labelledby="reading-title"><div class="mobile-starlight starlight-top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="mobile-starlight starlight-bottom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="section-heading">
         <div class="section-kicker">FREE BASIC READING</div>
         <h2 id="reading-title">あなたの魅力を知る、無料基本鑑定</h2>
@@ -140,7 +180,7 @@
       <div class="first-reading">
         <div class="first-reading-copy">
           <span class="first-reading-label">LUNA'S FIRST READING</span>
-          <h3>生年月日からわかる<br>無料の基本鑑定</h3>
+          <h3>生まれ持った星から<br>あなたらしさを紐解く</h3>
           <p>本命星・月命星・傾斜・干支から、<br>ルナがあなたの魅力を読み解きます。</p>
         </div>
         <button class="first-reading-button" id="first-reading-button" type="button" aria-controls="first-reading-panel" aria-expanded="false">
@@ -154,7 +194,7 @@
           <h3>あなたの生年月日を教えてください</h3>
           <p>ルナが、あなたの生まれ持った星を調べます。</p>
           <label for="reading-birthday">生年月日</label>
-          <input id="reading-birthday" name="reading-birthday" type="text" inputmode="numeric" maxlength="10" placeholder="例：19851025" required autocomplete="bday" aria-describedby="reading-birthday-help">
+          <input id="reading-birthday" name="reading-birthday" type="text" inputmode="numeric" maxlength="10" placeholder="例：20260613" required autocomplete="bday" aria-describedby="reading-birthday-help">
           <p class="birthday-help" id="reading-birthday-help">西暦の年・月・日を8桁で入力してください。例：2026年6月13日 → 20260613</p>
           <label for="reading-gender">性別</label>
           <select id="reading-gender" name="reading-gender" required>
@@ -162,7 +202,7 @@
             <option value="female">女性</option>
             <option value="male">男性</option>
           </select>
-          <button class="button button-primary" type="submit">星を調べる</button>
+          <button class="button button-primary" type="submit">無料で星と鑑定結果を見る</button>
           <p class="privacy-note">入力した生年月日は、この端末の中だけで使われます。</p>
         </form>
 
@@ -175,12 +215,7 @@
             <article><small>傾斜</small><strong id="keisha-star">—</strong></article>
             <article><small>干支</small><strong id="eto-sign">—</strong></article>
           </div>
-          <div class="reading-confirm">
-            <div class="luna-mini" aria-hidden="true">☾</div>
-            <div><strong>ルナの鑑定に進みますか？</strong><p>あなたの星を重ねて、本質と魅力をお伝えします。</p></div>
-          </div>
           <div class="confirm-actions">
-            <button class="button button-primary" id="start-luna-reading" type="button">はい、鑑定をお願いします</button>
             <button class="button button-ghost" id="change-reading-birthday" type="button">生年月日を変更する</button>
           </div>
         </section>
@@ -188,17 +223,17 @@
         <section class="luna-reading-result" id="luna-reading-result" aria-live="polite" hidden>
           <div class="reading-glow" aria-hidden="true">☾</div>
           <span class="form-kicker">LUNA'S MESSAGE</span>
-          <h3>ルナの鑑定が始まりました</h3>
-          <p class="reading-opening">水晶玉に、あなたの星の輝きが映し出されています…</p>
+          <h3>ルナから、<br>あなたへの鑑定メッセージ</h3>
+          <p class="reading-opening">水晶玉に、あなたの星の輝きが<br>映し出されています…</p>
           <div class="reading-text" id="reading-text"></div>
           <p class="reading-closing">あなたらしさは、幸運をひらくいちばん大切な力です。今日からその魅力を、少しずつ輝かせていきましょう。</p>
-          <div class="reading-next"><p>あなたの星を、もう一歩深く。<br>ケンケンが個別のお悩みに寄り添います。</p><a class="button button-primary" href="#personal-reading">有料のLINE個別鑑定を見る</a></div>
+          <div class="reading-next"><p>あなたの星を、もう一歩深く。<br><span class="reading-next-reassurance">ケンケンが個別のお悩みに寄り添います。</span></p><a class="button button-primary" href="#personal-reading">有料のLINE個別鑑定を見る</a></div>
           <button class="birthday-change" id="restart-reading" type="button">もう一度鑑定する</button>
         </section>
       </div>
     </section>
 
-    <section class="personal-reading" id="personal-reading" aria-labelledby="personal-reading-title">
+    <section class="personal-reading" id="personal-reading" aria-labelledby="personal-reading-title"><div class="mobile-starlight starlight-top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="mobile-starlight starlight-bottom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="section-heading">
         <div class="section-kicker">PERSONAL READING WITH KENKEN</div>
         <h2 id="personal-reading-title">あなたの星を、もう一歩深く。</h2>
@@ -222,8 +257,8 @@
       <section class="review-preview" aria-labelledby="review-preview-title">
         <div class="review-preview-heading"><span class="section-kicker">CUSTOMER REVIEWS</span><h3 id="review-preview-title">お客様の感想</h3></div>
         <div class="review-preview-grid">
-          <article class="review-preview-card"><span class="review-sample-label">Aさん</span><h4>自分の良さに、目を向けられました。</h4><p>「自分では当たり前だと思っていたことを、魅力として言葉にしてもらえて嬉しかったです。仕事の悩みも丁寧に聞いていただき、まず何から始めたいかを考えるきっかけになりました。」</p><p class="review-topic">相談テーマ例：仕事・自分の魅力</p></article>
-          <article class="review-preview-card"><span class="review-sample-label">Bさん</span><h4>自分のペースで進もうと思えました。</h4><p>「人間関係で考えすぎていましたが、自分と相手の違いを見つめ直すヒントをいただきました。優しい言葉にほっとして、無理をせず少しずつ向き合ってみようと思えました。」</p><p class="review-topic">相談テーマ例：人間関係</p></article>
+          <article class="review-preview-card"><span class="review-sample-label">Aさん（掲載例）</span><h4>自分の良さに、目を向けられました。</h4><p>「自分では当たり前だと思っていたことを、魅力として言葉にしてもらえて嬉しかったです。仕事の悩みも丁寧に聞いていただき、まず何から始めたいかを考えるきっかけになりました。」</p><p class="review-topic">相談テーマ例：仕事・自分の魅力</p></article>
+          <article class="review-preview-card"><span class="review-sample-label">Bさん（掲載例）</span><h4>自分のペースで進もうと思えました。</h4><p>「人間関係で考えすぎていましたが、自分と相手の違いを見つめ直すヒントをいただきました。優しい言葉にほっとして、無理をせず少しずつ向き合ってみようと思えました。」</p><p class="review-topic">相談テーマ例：人間関係</p></article>
         </div>
       </section>
       <div class="line-consultation">
@@ -248,11 +283,11 @@
       </div>
     </section>
 
-    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <section class="faq-section" id="faq" aria-labelledby="faq-title"><div class="mobile-starlight starlight-top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="mobile-starlight starlight-bottom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <div class="section-heading"><div class="section-kicker">QUESTIONS</div><h2 id="faq-title">よくあるご質問</h2><p>はじめての方も、安心してお楽しみください。</p></div>
       <div class="faq-list">
-        <details><summary>無料でどこまで占えますか？</summary><p>★毎日の占いでは、ラッキーカラー・パワーフード・開運アクション・ラッキーナンバー・今日の一言をご覧いただけます。<br>★基本鑑定では、本命星・月命星・傾斜・干支と、あなたの本質や魅力をお伝えします。</p><p>どちらも何度でも無料にて、お楽しみいただけます。</p></details>
-        <details><summary>生年月日はどこに保存されますか？</summary><p>生年月日は、お使いの端末のブラウザー内に保存されます。占いのためにサーバーへ送信することはありません。別の端末やブラウザーでは再入力が必要です。共有の端末では、入力した情報が次の利用者に表示される場合があります。</p></details>
+        <details><summary>無料でどこまで占えますか？</summary><p>★毎日の占い<br>ラッキーカラー・パワーフード・開運アクション・ラッキーナンバー・今日の一言をご覧いただけます。</p><p>★相性占い<br>ふたりの生年月日から、本命星の五行をもとに、お互いの特徴や心地よい関係を育むヒントをお届けします。</p><p>★マヤ暦×数秘鑑定<br>KIN・太陽の紋章・ウェイブスペル・銀河の音・数秘から、あなたらしさや強みを見つめるヒントをお届けします。</p><p>★基本鑑定<br>本命星・月命星・傾斜・干支から、あなたの本質や魅力を読み解きます。</p><p>すべて何度でも無料でお楽しみいただけます。</p></details>
+        <details><summary>生年月日はどこに保存されますか？</summary><p>毎日の占い・基本鑑定で入力した生年月日は、お使いの端末のブラウザー内に保存されます。相性占い・マヤ暦×数秘鑑定で入力した生年月日は保存されません。</p><p>別の端末やブラウザーでは再入力が必要です。共有の端末では、毎日の占い・基本鑑定で保存した生年月日が次の利用者に表示される場合があります。</p></details>
         <details><summary>本命星・月命星・傾斜とは何ですか？</summary><p>本命星は生まれた年から読み解く基本的な性質、月命星は生まれた月から読み解く内面の性質、傾斜は本命星と月命星の組み合わせから読み解く心の傾向です。ひとつの星だけで決めつけず、それぞれを重ねてあなたの魅力を見つめます。</p></details>
         <details><summary>さらに詳しく相談したいときは？</summary><p>ケンケンによる有料のLINE個別鑑定をご案内しています。</p><ul class="faq-course-list"><li><strong>総合鑑定　1000円</strong><span>仕事・恋愛・人間関係などを総合的に読み解きます。</span></li><li><strong>じっくり鑑定　1000円</strong><span>1つのお悩みを深く読み解き、行動のヒントをお伝えします。</span></li><li><strong>開運フォロー　2000円</strong><span>九星氣學を元に、開運のアドバイスをさせていただきます。</span></li></ul><p>コース選びに迷う方も、LINEからお気軽にご相談ください。</p></details>
       </div>
@@ -266,7 +301,7 @@
       </div>
       <h2 id="closing-title"><span>あなたの中には、</span><span>まだ知らない素敵な星があります。</span></h2>
       <p><span>ルナと一緒に、</span><span>その輝きを見つけていきましょう。</span></p>
-      <a class="button button-primary" href="#top">トップへ戻る</a>
+      <a class="button button-primary" href="#page-top">トップに戻る</a>
     </section>
   </main>
 
