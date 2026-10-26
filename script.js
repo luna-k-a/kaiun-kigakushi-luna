@@ -111,7 +111,7 @@
 
   function readBirthday(field) {
     const birthday = normalizeBirthday(field.value);
-    field.setCustomValidity(birthday ? "" : "実在する生年月日を西暦8桁で入力してください。例：19851025（未来の日付は入力できません）");
+    field.setCustomValidity(birthday ? "" : "実在する生年月日を西暦8桁で入力してください。例：20260613（未来の日付は入力できません）");
     if (!birthday) { field.reportValidity(); return null; }
     field.value = birthday.replaceAll("-", "");
     return birthday;
@@ -348,24 +348,157 @@
     document.querySelector("#keisha-star").textContent = currentStars.keisha;
     document.querySelector("#eto-sign").textContent = currentStars.eto;
     readingForm.hidden = true;
-    readingResult.hidden = true;
+    renderBasicReading();
     birthStars.hidden = false;
-    birthStars.scrollIntoView({ behavior: "smooth", block: "center" });
+    birthStars.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   document.querySelector("#change-reading-birthday").addEventListener("click", () => {
     birthStars.hidden = true;
+    readingResult.hidden = true;
     readingForm.hidden = false;
     readingBirthday.focus();
   });
 
-  document.querySelector("#start-luna-reading").addEventListener("click", () => {
+  function renderBasicReading() {
     if (!currentStars) return;
     document.querySelector("#reading-text").innerHTML = `<p><strong>${currentStars.honmei}</strong>を本命星に持つあなたは、${starMessages[currentStars.honmei]}</p><p>心の内側には<strong>${currentStars.getsumei}</strong>の性質が息づき、${starMessages[currentStars.getsumei]}</p><p><strong>${currentStars.keisha}</strong>の傾斜と<strong>${currentStars.eto}</strong>の気質が重なることで、あなたならではの個性と魅力が生まれています。</p>`;
-    birthStars.hidden = true;
     readingResult.hidden = false;
-    readingResult.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
+  }
 
   document.querySelector("#restart-reading").addEventListener("click", openFirstReading);
+  const compatibilityForm = document.querySelector('#compat-form');
+  if (compatibilityForm) {
+    const you = document.querySelector('#compat-you');
+    const other = document.querySelector('#compat-other');
+    const output = document.querySelector('#compat-result');
+    const error = document.querySelector('#compat-error');
+    const elements = {'一白水星':'水','二黒土星':'土','三碧木星':'木','四緑木星':'木','五黄土星':'土','六白金星':'金','七赤金星':'金','八白土星':'土','九紫火星':'火'};
+    const nourish = {'木':'火','火':'土','土':'金','金':'水','水':'木'};
+    compatibilityForm.addEventListener('submit', event => {
+      event.preventDefault(); output.hidden = true; error.textContent = '';
+      const a = normalizeBirthday(you.value), b = normalizeBirthday(other.value);
+      if (!a || !b || Number(a.slice(0,4)) < 1900 || Number(b.slice(0,4)) < 1900) {
+        error.textContent = '2人とも、1900年以降の実在する生年月日を8桁で入力してください。未来の日付は入力できません。'; return;
+      }
+      const starA = calculateStars(a).honmei, starB = calculateStars(b).honmei;
+      const elementA = elements[starA], elementB = elements[starB];
+      document.querySelector('#compat-star-you').textContent = starA + '（' + elementA + '）';
+      document.querySelector('#compat-star-other').textContent = starB + '（' + elementB + '）';
+      document.querySelector('#compat-you-trait').textContent = starMessages[starA];
+      document.querySelector('#compat-other-trait').textContent = starMessages[starB];
+      let title, message, tip;
+      if (elementA === elementB) {
+        title = '共感を育てるふたり — 比和';
+        message = '同じ五行のテーマを持つ組み合わせです。共通点を見つけやすい一方、似ているからこそ相手も同じ気持ちだと思い込まないことを大切に。';
+        tip = '「私はこう感じたよ。あなたはどう？」と、お互いの気持ちを言葉で確かめてみましょう。';
+      } else if (nourish[elementA] === elementB || nourish[elementB] === elementA) {
+        title = '支え合いを育てるふたり — 相生';
+        message = '五行では、一方がもう一方を育む関係と読みます。あなたからお相手へ支える流れ' + (nourish[elementA] === elementB ? 'を' : 'とは逆に、お相手からあなたへ支える流れを') + 'イメージする組み合わせです。役割を固定せず、受け取ることと返すことの両方を大切に。';
+        tip = '相手の助けになったことへ感謝を伝えて、自分からも小さなお返しをしてみましょう。';
+      } else {
+        title = '違いから学び合うふたり — 相剋';
+        message = '五行では、お互いの勢いを調整する関係と読みます。「合わない」という結論ではありません。違う視点や得意なことを認めると、新しい気づきを育てられます。';
+        tip = 'すぐに結論を合わせず、まず相手の理由を聞いてから、自分の希望をひとつ伝えてみましょう。';
+      }
+      document.querySelector('#compat-relation').textContent = title;
+      document.querySelector('#compat-message').textContent = message;
+      document.querySelector('#compat-tip').textContent = tip;
+      output.hidden = false; output.focus();
+    });
+    [you,other].forEach(field => field.addEventListener('input',()=>{output.hidden=true;error.textContent='';}));
+    document.querySelector('#compat-reset').addEventListener('click',()=>{output.hidden=true;compatibilityForm.reset();error.textContent='';you.focus();});
+  }
+})();
+
+// Fit the mobile reassurance sentence to its actual available line width.
+(() => {
+  document.querySelectorAll('.reading-next-reassurance, .compat-reassurance').forEach(text => {
+  const mobile = window.matchMedia('(max-width: 700px)');
+  let scheduled = false;
+  const fit = () => {
+    scheduled = false;
+    if (!mobile.matches) { text.style.removeProperty('font-size'); return; }
+    const width = text.clientWidth;
+    if (!width) return;
+    const range = document.createRange();
+    range.selectNodeContents(text);
+    let low = 1, high = Math.min(width, 100);
+    for (let i = 0; i < 16; i++) {
+      const size = (low + high) / 2;
+      text.style.fontSize = size + 'px';
+      if (range.getBoundingClientRect().width <= width - 1) low = size;
+      else high = size;
+    }
+    text.style.fontSize = (Math.floor(low * 10) / 10) + 'px';
+  };
+  const schedule = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(fit); } };
+  if (window.ResizeObserver) new ResizeObserver(schedule).observe(text.parentElement);
+  window.addEventListener('resize', schedule);
+  if (document.fonts) document.fonts.ready.then(schedule);
+  schedule();
+  });
+})();
+
+// Dreamspell count and all-digit numerology; this form does not store birth data.
+(() => {
+  const form = document.querySelector('#maya-form');
+  if (!form) return;
+  const seals = ['赤い竜','白い風','青い夜','黄色い種','赤い蛇','白い世界の橋渡し','青い手','黄色い星','赤い月','白い犬','青い猿','黄色い人','赤い空歩く人','白い魔法使い','青い鷲','黄色い戦士','赤い地球','白い鏡','青い嵐','黄色い太陽'];
+  const gifts = ['人を育み、安心できる場所をつくる','思いを言葉にして届ける','心の豊かさと想像力を育てる','好奇心から可能性を育てる','自分の感覚と生命力を大切にする','違いをつなぎ、橋を架ける','手を動かし、経験から学ぶ','調和や美しさを見つける','気持ちを整え、新しい流れを迎える','誠実なつながりを大切にする','遊び心と柔軟な発想を生かす','自分で選ぶ意志を尊重する','未知の世界を探り、人を支える','目の前の人に丁寧に向き合う','広い視野で可能性を見る','問いを持ち、納得するまで探求する','人や場所とのつながりを育てる','自分を見つめ、誠実さを磨く','変化を成長のきっかけにする','温かさを分かち合い、周りを照らす'];
+  const tones = ['目的を定める','違いから学ぶ','人をつなぐ','形や土台を整える','中心となる思いを持つ','バランスを整える','自分の感覚に耳を傾ける','言葉と行動をそろえる','意図を深める','ひとつ形にする','余分なものを手放す','協力して分かち合う','歩みを振り返り次へつなぐ'];
+  const numbers = {
+    1:['自分から始める力','小さな挑戦を、自分の意志で始めてみましょう。','やってみたいことの最初の一歩を決める。'],
+    2:['人の気持ちに寄り添う力','やさしさとともに、自分の気持ちも大切に。','自分が心地よいと感じることをひとつ選ぶ。'],
+    3:['楽しさを表現する力','思いついたことを、気軽に形にしてみて。','楽しいアイデアをひとつ書く。'],
+    4:['着実に積み重ねる力','無理のない手順をつくると進みやすくなりそう。','今日の作業を小さな手順に分ける。'],
+    5:['変化を楽しむ力','好奇心を大切に、心地よい変化を取り入れて。','いつもと違う方法を安全な範囲で試す。'],
+    6:['温かさを育てる力','人を支えるときも、自分の余裕を忘れずに。','自分をいたわる時間を10分つくる。'],
+    7:['深く考え、探求する力','静かな時間の中で、自分の答えを育てて。','気になっていたことをひとつ調べる。'],
+    8:['思いを実行に移す力','成果だけでなく、協力する人との関係も大切に。','目標に向けて今日できることを実行する。'],
+    9:['広い視野で受け止める力','さまざまな価値観と、自分らしさの両方を大切に。','今の自分に必要なものをひとつ選ぶ。'],
+    11:['繊細な感性とひらめき','浮かんだ気づきを、無理なく言葉にしてみて。','心に残ったひらめきをメモする。'],
+    22:['大きな思いを形にする力','理想を小さな手順に分けて、仲間と育てて。','理想へ近づく具体的な作業をひとつ決める。'],
+    33:['豊かな思いやりと表現力','温かさを分かち合いながら、自分の楽しさも大切に。','自分も相手もうれしくなる言葉を伝える。']
+  };
+  const mod = (n,m) => ((n % m) + m) % m;
+  const serial = (y,m,d) => y * 365 + [0,31,59,90,120,151,181,212,243,273,304,334][m-1] + d-1;
+  const kinFor = (y,m,d) => mod(33 + serial(y,m,d) - serial(1987,7,26),260)+1;
+  const numerology = (digits) => { const steps = []; let n = [...digits].reduce((a,b)=>a+Number(b),0); steps.push(n); while(n>9 && ![11,22,33].includes(n)) { n=[...String(n)].reduce((a,b)=>a+Number(b),0); steps.push(n); } return {number:n,steps}; };
+  const input=document.querySelector('#maya-birthday');
+  const clean = value => value.normalize('NFKC').trim();
+  const dateValue = () => { const digits=clean(input.value); return /^\d{8}$/.test(digits) ? `${digits.slice(0,4)}-${digits.slice(4,6)}-${digits.slice(6,8)}` : ''; };
+  const period=document.querySelector('#maya-period');
+  const leapBox=document.querySelector('#maya-leap');
+  const result=document.querySelector('#maya-result');
+  const error=document.querySelector('#maya-error');
+  const today = new Date();
+  const maxDate = [today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+  input.addEventListener('input',()=> { const leap=dateValue().slice(5)==='02-29'; leapBox.hidden=!leap; period.required=leap; result.hidden=true; error.textContent=''; });
+  form.addEventListener('submit',event=> {
+    event.preventDefault(); error.textContent=''; result.hidden=true;
+    const value=dateValue();
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(value)) { error.textContent='生年月日を入力してください。'; return; }
+    const [y,m,d]=value.split('-').map(Number),check=new Date(Date.UTC(y,m-1,d));
+    if(y<1900 || value>maxDate || check.getUTCFullYear()!==y || check.getUTCMonth()!==m-1 || check.getUTCDate()!==d) { error.textContent='1900年1月1日から今日までの、正しい生年月日を入力してください。'; return; }
+    const leap=m===2&&d===29;
+    if(leap&&!period.value) { error.textContent='2月29日生まれの方は出生時間帯を選んでください。'; return; }
+    const kins=leap ? (period.value==='am'?[kinFor(y,2,28)]:period.value==='pm'?[kinFor(y,3,1)]:[kinFor(y,2,28),kinFor(y,3,1)]) : [kinFor(y,m,d)];
+    const descriptions=kins.map(k=>({k,seal:(k-1)%20,tone:(k-1)%13,wave:((Math.floor((k-1)/13)*13)%20)}));
+    const n=numerology(value.replaceAll('-',''));
+    const join=(fn)=>descriptions.map((x,i)=>(kins.length>1?(i===0?'午前候補：':'午後候補：'):'')+fn(x)).join(' ／ ');
+    document.querySelector('#maya-result-date').textContent=`${y}年${m}月${d}日生まれ`;
+    document.querySelector('#maya-kin').textContent=join(x=>'KIN '+x.k);
+    document.querySelector('#maya-seal').textContent=join(x=>seals[x.seal]);
+    document.querySelector('#maya-wave').textContent=join(x=>seals[x.wave]);
+    document.querySelector('#maya-tone').textContent=join(x=>`${x.tone+1} — ${tones[x.tone]}`);
+    document.querySelector('#maya-message').textContent=join(x=>`「${gifts[x.seal]}」というテーマ。${tones[x.tone]}ことを、あなたの魅力を見つめるヒントに。`);
+    document.querySelector('#numerology-number').textContent='数秘 '+n.number;
+    document.querySelector('#numerology-message').textContent=numbers[n.number][0]+'。'+numbers[n.number][1];
+    document.querySelector('#numerology-process').textContent='計算：'+[...value.replaceAll('-','')].join(' + ')+' = '+n.steps.join(' → ');
+    document.querySelector('#maya-combined').textContent=kins.length>1 ? `マヤ暦は出生時間帯により2候補あります。両方のテーマと、数秘の「${numbers[n.number][0]}」を比べ、今の自分に合うヒントを選んでみてください。` : `マヤ暦の「${gifts[descriptions[0].seal]}」と、数秘の「${numbers[n.number][0]}」。ふたつの視点を重ねて、あなたらしい強みの生かし方を探してみましょう。`;
+    document.querySelector('#maya-action').textContent=numbers[n.number][2];
+    result.hidden=false; result.focus();
+  });
+  document.querySelector('#maya-again').addEventListener('click',()=>{result.hidden=true;input.focus();});
 })();
